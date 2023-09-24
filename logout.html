@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title id="title"></title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <script language="JavaScript">
+        function openLogin() {
+      if (window.name != 'hotspot_logout') return true;
+      open('$(link-login)', '_blank', '');
+      window.close();
+      return false;
+        }
+        function readablizeBytes(bytes) {
+          var s = ['bytes', 'kb', 'MB', 'GB', 'TB', 'PB'];
+          var e = Math.floor(Math.log(bytes)/Math.log(1024));
+          return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2)+" "+s[e];
+      }
+    //-->
+    </script>
+<div class="container transisi">
+		<div class="header">
+			<img src="img/Logo.png" alt="" style="border-radius: 5px" height="100%" width="100">
+			<div class="head-nav">
+			
+        <a id="tblmdl">Cara Pakai</a>
+			  <a href="login.html">Ind</a>
+			
+			</div>
+		</div>
+		<div class="notif">
+		<div class="txtjln">
+		<marquee direction="left">Selamat datang di hotspot kami, nikmati layanan internet sepuasnya, Unlimited tanpa batasan kuota dengan harga terjangkau</marquee>
+		 </div>
+		 <div class="ntf">
+		
+		 <span>|&nbsp;Notifikasi:</span><marquee direction="right">Terimakasih telah menggunakan layanan kami!, Klik Login untuk masuk kembali.</marquee>
+		 
+		 </div>
+		</div>
+		<div class ="main">
+			<div class="atas">
+					<img src="img/banner1.jpg" alt="" style="border-radius: 5px" height="100%" width="100%">
+				</div>
+			<div class="kanan">
+				<div class="login-content">
+					<div style="font-size: 12px;">
+                        <h3 style="color:#7b7a7a;text-align:center;margin-top:15px;">Terima Kasih</h3>
+                        <div align="center" style="color:#e91e63;"><h2>ANDA TELAH LOGOUT</h2></div> 
+                          <table align="center">
+                            <tr>
+                              <td align="left" style="width: 35%;">User</td>
+                              <td>$(username)</td>
+                            </tr>
+                            <tr>
+                              <td align="left">IP Address</td>
+                              <td>$(ip)</td>
+                            </tr>
+                            <tr>
+                              <td align="left">MAC</td>
+                              <td>$(mac)</td>
+                            </tr>
+                            <tr>
+                              <td align="left">UL | DL</td>
+                               <td>$(bytes-in-nice) | $(bytes-out-nice)</td>
+                            </tr>
+                            <tr>
+                                <td align="left">Aktif</td>
+                              <td>$(uptime)</td>
+                            </tr>
+                            $(if remain-bytes-total)
+                            <tr>
+                              <td align="left">Sisa Kuota</td>
+                              <td><script language="JavaScript">document.write(readablizeBytes($(remain-bytes-total)));</script></td>
+                            </tr>
+                            $(endif)
+                            $(if session-time-left)
+                            <tr>
+                              <td align="left">Sisa Waktu</td>
+                              <td>$(session-time-left)</td>
+                            </tr>
+                            $(endif)
+                          </table>
+                          <div class="mr-b-10">
+                        <center><a href="login.html"><button type="submit" class="btn">LOGIN</button></a></center>
+                        </div>
+                    </div>
+					<center style="padding:104px 20px" id="ctr"></center>
+				</div>
+			</div>
+			<div class="kiri">
+				<img src="img/banner1.jpg" alt="" style="border-radius: 5px" height="100%" width="100%">
+			</div>
+			<div class="bawah">
+				<div class="ttg"><h3>Tentang Hotspot!</h3></div>
+				<p style="text-align: justify; font-size:12px; margin:5px; padding:13px;">$(identity) merupakan Penyedia Layanan Internet Unlimited dengan harga terjangkau, 
+				memberikan solusi terbaik untuk anda mendapatkan koneksi internet yang cepat dan stabil serta. Semua paket 
+				internet yang kami sediakan Unlimited Tanpa Batasan Quota bisa digunakan sepuasnya 1x24 Jam.</p>
+			</div>
+		</div>
+		<div class="footer">
+			<center><i>Copyright © 2021</i>
+			<i>$(identity)</i></center>
+			<!-- Tolong jangan dihilangkan bagian ini, dibuat oleh Sobur Sobari © 2021 -->
+    </div>
+    <div id="mymodal" class="penghalang transisi">
+			<div class="modal-content">
+				<span id="tutup">&times;</span>
+				<p>Pastikan area anda tercover dengan signal wifi kami.
+					Akfitkan wireless pada smartphone atau laptop anda dan koneksikan dengan SSID hotspot kami.
+					Tunggu beberapa saat sampai pop-up notifikasi untuk login muncul, 
+					Setelah anda berhasil masuk ke halaman login silakan aktivasi ID VOUCHER dan klik Login.</p>
+			</div>
+     </div>
+  </div>
+  <script>
+    var modal =document.getElementById("mymodal");
+    var tblmdl =document.getElementById("tblmdl");
+    var tutup =document.getElementById("tutup");
+    tblmdl.onclick= function(){
+      modal.style.display="block";
+    }
+    tutup.onclick= function(){
+      modal.style.display="none";
+    }
+    window.onclick= function(e){
+      if (e.target==modal){
+        modal.style.display="none";
+      }
+      
+    }
+  </script>
+
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " Logout";
+</script>
+
+
+
+</body>
+</html>

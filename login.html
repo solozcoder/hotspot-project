@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="title"></title>
+    <meta
+      name="viewport"
+      content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+  </head>
+  <body>
+    <div class="container transisi">
+      <nav class="navbar">
+        <img
+          src="assets/img/logo.png"
+          alt=""
+          style="border-radius: 5px"
+          height="100%"
+          width="100"
+        />
+        <ul>
+          <li><a id="tblmdl">Cara Pakai</a></li>
+        </ul>
+      </nav>
+
+      <div class="notif">
+        <div class="txtjln">
+          <p direction="right">
+            Selamat datang di hotspot kami, nikmati layanan internet sepuasnya,
+            Unlimited tanpa batasan kuota dengan harga terjangkau.
+          </p>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col banner-slide">
+            <div class="owl-carousel owl-theme">
+              <img src="assets/img/slide/slide-1.jpeg" alt="slide-1" />
+              <img src="assets/img/slide/slide-3.jpeg" alt="slide-3" />
+            </div>
+          </div>
+
+          <div class="col form-user">
+            <div class="login-content">
+              <form
+                class="form-login"
+                name="login"
+                action="$(link-login-only)"
+                method="post"
+                $(if
+                chap-id)
+                onSubmit="return doLogin()"
+                $(endif)
+              >
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+                <h4>LOGIN WIFI</h4>
+                <div class="beli">
+                  Belum punya pake?<a href="harga.html"> Beli paket disini!</a>
+                </div>
+                <div style="margin: 40px"></div>
+                <div class="input-div one">
+                  <div class="transisi">
+                    <h5 id="usern">Voucher</h5>
+                    <input
+                      type="text"
+                      class="input"
+                      id="username"
+                      autocomplete="off"
+                      name="username"
+                      value="$(username)"
+                      placeholder="98xxx atau xxxx@violet"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="input-div pass" id="passw">
+                  <div class="div">
+                    <h5 id="pwd" style="display: none" class="transisi">
+                      Password
+                    </h5>
+                    <input
+                      class="input transisi"
+                      id="password"
+                      autocomplete="off"
+                      name="password"
+                      label="false"
+                      required="required"
+                      type="hidden"
+                      placeholder="***"
+                    />
+                  </div>
+                </div>
+                <div style="margin: 30px"></div>
+                <center>
+                  <button type="submit" class="btn-activate">Aktivasi</button>
+                </center>
+              </form>
+              <center style="padding: 5px 20px 47px 20px" id="ctr">
+                <p style="margin-bottom: 10px">Atau login dengan</p>
+                <button type="button" class="button-blue" onclick="gratis();">
+                  Gratis
+                </button>
+                <button type="button" class="button-blue" onclick="member();">
+                  Member
+                </button>
+              </center>
+            </div>
+          </div>
+          <!-- <div class="w-50"></div> -->
+          <div class="col inform-user">
+            <div class="ttg"><h3>Tentang Hotspot</h3></div>
+            <p
+              style="
+                text-align: justify;
+                font-size: 12px;
+                margin: 5px;
+                padding: 13px;
+              "
+            >
+              G-Net merupakan Penyedia Layanan Internet Unlimited dengan harga
+              terjangkau, memberikan solusi terbaik untuk anda mendapatkan
+              koneksi internet yang cepat dan stabil serta. Semua paket internet
+              yang kami sediakan Unlimited Tanpa Batasan Quota bisa digunakan
+              sepuasnya 1x24 Jam.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <center><i>Copyright GNet © 2023</i></center>
+      </div>
+
+      <!-- Modal Structure -->
+      <div id="mymodal" class="penghalang transisi">
+        <div class="modal-content">
+          <span id="tutup">&times;</span>
+          <p>
+            Pastikan area anda tercover dengan signal wifi kami. Akfitkan
+            wireless pada smartphone atau laptop anda dan koneksikan dengan SSID
+            hotspot kami. Tunggu beberapa saat sampai pop-up notifikasi untuk
+            login muncul, Setelah anda berhasil masuk ke halaman login silakan
+            aktivasi ID VOUCHER dan klik Login.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      var modal = document.getElementById("mymodal");
+      var tblmdl = document.getElementById("tblmdl");
+      var tutup = document.getElementById("tutup");
+      tblmdl.onclick = function () {
+        modal.style.display = "block";
+      };
+      tutup.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (e) {
+        if (e.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"
+    ></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+          items: 1,
+          loop: true,
+          margin: 10,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      document.getElementById("title").innerHTML =
+        window.location.hostname + " Login";
+    </script>
+    <script type="text/javascript">
+      username.value = "";
+      //auto pass by username-->
+      function setpass() {
+        var user = username.value;
+        password.value = user;
+      }
+
+      username.onkeyup = setpass;
+
+      function voucher() {
+        var ctr = document.getElementById("ctr");
+        var pwd = document.getElementById("pwd");
+        var usern = document.getElementById("usern");
+        usern.innerHTML = "Voucher";
+        pwd.style.display = "none";
+        ctr.style.padding = "45.6px 20px";
+        username.focus();
+        password.type = "hidden";
+        password.value = username.value;
+        username.onkeyup = setpass;
+      }
+
+      function gratis() {
+        window.location.href = "redirect.html";
+      }
+
+      // change to member mode
+      function member() {
+        var ctr = document.getElementById("ctr");
+        var pwd = document.getElementById("pwd");
+        var usern = document.getElementById("usern");
+        usern.innerHTML = "Username";
+        pwd.style.display = "";
+        ctr.style.padding = "20px";
+        username.focus();
+        username.onkeyup = "";
+        password.type = "Password";
+        password.value = "";
+      }
+    </script>
+  </body>
+</html>

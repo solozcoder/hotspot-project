@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+	$(if refresh-timeout)
+	<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+	$(endif)
+	<title id="title"></title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script language="JavaScript">
+
+	$(if advert-pending == 'yes')
+		var popup = '';
+		function focusAdvert() {
+		if (window.focus) popup.focus();
+		}
+		function openAdvert() {
+		popup = open('$(link-advert)', 'hotspot_advert', '');
+		setTimeout("focusAdvert()", 1000);
+		}
+	$(endif)
+		function openLogout() {
+		if (window.name != 'hotspot_status') return true;
+			open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+		window.close();
+		return false;
+		}
+
+	</script>
+</head>
+<body $(if advert-pending == 'yes')	onLoad="openAdvert()" $(endif)>
+<div class="container transisi">
+		<div class="header">
+			<img src="img/logo.png" alt="" style="border-radius: 5px" height="100%" width="100">
+			<div class="head-nav">
+			
+				<a id="tblmdl">Cara Pakai</a>
+				<a href="login.html">Ind</a>
+			
+			</div>
+		</div>
+		<div class="notif">
+		<div class="txtjln">
+		<marquee direction="left">Selamat datang di hotspot kami, nikmati layanan internet sepuasnya, Unlimited tanpa batasan kuota dengan harga terjangkau</marquee>
+		 </div>
+		 <div class="ntf">
+		
+		 <span>|&nbsp;Notifikasi:</span><marquee direction="right">Welcome <span>$(username)</span> anda telah terhubung silahkan gunakan internet dengan bijak!</marquee>
+		 
+		 </div>
+		</div>
+		<div class ="main">
+			<div class="atas">
+					<img src="img/banner1.jpg" alt="" style="border-radius: 5px" height="100%" width="100%">
+				</div>
+			<div class="kanan">
+				<div class="login-content">
+					<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+						$(if login-by == 'trial')
+							<center><div><h2 class="title">Welcome</h2> 
+							<h3 style="color: #999999;">trial user</h3></div><br></center>
+						$(elif login-by != 'mac')
+							<center><div><h2 class="title">Welcome</h2>
+							<h3 id="user" style="color: #999999;">$(username)</h3></div><br></center>
+						$(endif)
+						<center><table class="table1" Style="font-size:12px">
+							<tr><td>IP Address</td><td>: $(ip)</td></tr>
+							<tr><td>Mac Address</td><td>: $(mac)</td></tr>
+							<tr><td>Download</td><td>: $(bytes-in-nice)</td></tr>
+							<tr><td>Upload</td><td>: $(bytes-out-nice)</td></tr>
+							<tr><td>Terkoneksi</td><td>: $(uptime)</td></tr>
+						$(if remain-bytes-total)
+							<tr><td>Sisa Kuota</td><td>: $(remain-bytes-total-nice)</td></tr>
+						$(endif)
+						$(if session-time-left)
+							<tr><td>Sisa Waktu</td><td>: $(session-time-left)</td></tr>
+						$(endif)
+						$(if blocked == 'yes')
+							<tr><td>Status</td><td><div style="color: #FF8080">
+						<a href="$(link-advert)" target="hotspot_advert">: advertisement</a> required</div></td></tr>
+						$(elif refresh-timeout)
+							<tr><td>Refresh</td><td>: $(refresh-timeout)</td></tr>
+						$(endif)
+							
+						</table></center>
+						$(if login-by-mac != 'yes')
+						<br>
+						<center><input type="submit" class="btn" value="LOGOUT"></center>
+					
+					</form>
+					<center style="padding:80px 20px" id="ctr">
+					
+				</div>
+			</div>
+			<div class="kiri">
+				<img src="img/banner1.jpg" alt="" style="border-radius: 5px" height="100%" width="100%">
+			</div>
+			<div class="bawah">
+				<div class="ttg"><h3>Tentang Hotspot!</h3></div>
+				<p style="text-align: justify; font-size:12px; margin:5px; padding:13px;">$(identity) merupakan Penyedia Layanan Internet Unlimited dengan harga terjangkau, 
+				memberikan solusi terbaik untuk anda mendapatkan koneksi internet yang cepat dan stabil serta. Semua paket 
+				internet yang kami sediakan Unlimited Tanpa Batasan Quota bisa digunakan sepuasnya 1x24 Jam.</p>
+			</div>
+		</div>
+		<div class="footer">
+			<center><i>Copyright © 2021</i>
+			<i>$(identity)</i></center>
+			<!-- Tolong jangan dihilangkan bagian ini, dibuat oleh Sobur Sobari © 2021 -->
+		</div>
+	<!-- Modal Structure -->
+	<div id="mymodal" class="penghalang transisi">
+		<div class="modal-content">
+			<span id="tutup">&times;</span>
+			<p>Pastikan area anda tercover dengan signal wifi kami.
+				Akfitkan wireless pada smartphone atau laptop anda dan koneksikan dengan SSID hotspot kami.
+				Tunggu beberapa saat sampai pop-up notifikasi untuk login muncul, 
+				Setelah anda berhasil masuk ke halaman login silakan aktivasi ID VOUCHER dan klik Login.</p>
+		</div>
+	</div>
+</div>
+<script>
+	var modal =document.getElementById("mymodal");
+	var tblmdl =document.getElementById("tblmdl");
+	var tutup =document.getElementById("tutup");
+	tblmdl.onclick= function(){
+		modal.style.display="block";
+	}
+	tutup.onclick= function(){
+		modal.style.display="none";
+	}
+	window.onclick= function(e){
+		if (e.target==modal){
+			modal.style.display="none";
+		}
+		
+	}
+</script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " Login";
+</script>
+
+
+
+</body>
+</html>
